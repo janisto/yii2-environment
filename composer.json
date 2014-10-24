@@ -1,0 +1,27 @@
+{
+    "name": "janisto/yii2-environment",
+    "description": "Environment class for Yii 2, used to set configuration for console and web apps depending on the server environment.",
+    "keywords": ["yii", "environment", "extension"],
+    "homepage": "https://github.com/janisto/yii2-environment",
+    "type": "yii2-extension",
+    "license": "public domain",
+    "authors": [
+        {
+            "name": "Jani Mikkonen",
+            "email": "janisto@php.net"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/janisto/yii2-environment/issues?state=open",
+        "source": "https://github.com/janisto/yii2-environment"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "janisto\\environment\\": ""
+        }
+    }
+}
