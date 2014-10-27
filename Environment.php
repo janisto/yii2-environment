@@ -3,9 +3,10 @@
 namespace janisto\environment;
 
 /**
+ * Environment class for Yii 2, used to set configuration for console and web apps depending on the server environment.
+ *
  * @name Environment
  * @author Jani Mikkonen <janisto@php.net>
- * @version 1.0.0-dev
  * @license public domain (http://unlicense.org)
  * @link https://github.com/janisto/yii2-environment
  */
@@ -43,15 +44,15 @@ class Environment
      */
     public $yiiDebug;
     /**
-     * @var string yii environment
+     * @var string defines in which environment the application is running
      */
     public $yiiEnv;
     /**
-     * @var array aliases
+     * @var array register path aliases
      */
     public $aliases = [];
     /**
-     * @var array class map
+     * @var array merge class map used by the Yii autoloading mechanism
      */
     public $classMap = [];
     /**
@@ -92,7 +93,7 @@ class Environment
         foreach ((array) $configDir as $k => $v) {
             $dir = rtrim($v, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
             if (!is_dir($dir)) {
-                throw new \Exception('Invalid configuration directory "'.$dir.'".');
+                throw new \Exception('Invalid configuration directory "' . $dir . '".');
             }
             $this->configDir[$k] = $dir;
         }
@@ -104,18 +105,18 @@ class Environment
      * @param string|null $mode environment mode
      * @throws \Exception
      */
-    protected function setMode($mode = null)
+    protected function setMode($mode)
     {
         if ($mode === null) {
-            // Return mode based on environment variable
+            // Return mode based on environment variable.
             $mode = getenv($this->envName);
             if ($mode === false) {
-                // Defaults to production
+                // Defaults to production.
                 $mode = 'prod';
             }
         }
 
-        // Check if mode is valid
+        // Check if mode is valid.
         $mode = strtolower($mode);
         if (!in_array($mode, $this->validModes, true)) {
             throw new \Exception('Invalid environment mode supplied or selected: ' . $mode);
@@ -127,38 +128,37 @@ class Environment
     /**
      * Load and merge configuration files into one array.
      *
-     * @return array $config array to be processed by setEnvironment.
+     * @return array $config array to be processed by setEnvironment
      * @throws \Exception
      */
     protected function getConfig()
     {
         $configMerged = [];
         foreach ($this->configDir as $configDir) {
-            // Merge main config
+            // Merge main config.
             $fileMainConfig = $configDir . 'main.php';
             if (!file_exists($fileMainConfig)) {
-                throw new \Exception('Cannot find main config file "'.$fileMainConfig.'".');
+                throw new \Exception('Cannot find main config file "' . $fileMainConfig . '".');
             }
             $configMain = require($fileMainConfig);
             if (is_array($configMain)) {
                 $configMerged = \yii\helpers\ArrayHelper::merge($configMerged, $configMain);
             }
 
-            // Merge mode specific config
+            // Merge mode specific config.
             $fileSpecificConfig = $configDir . 'mode_' . $this->mode . '.php';
             if (!file_exists($fileSpecificConfig)) {
-                throw new \Exception('Cannot find mode specific config file "'.$fileSpecificConfig.'".');
+                throw new \Exception('Cannot find mode specific config file "' . $fileSpecificConfig . '".');
             }
             $configSpecific = require($fileSpecificConfig);
             if (is_array($configSpecific)) {
                 $configMerged = \yii\helpers\ArrayHelper::merge($configMerged, $configSpecific);
             }
 
-            // If one exists, merge local config
+            // If one exists, merge local config.
             $fileLocalConfig = $configDir . 'local.php';
             if (file_exists($fileLocalConfig)) {
                 $configLocal = require($fileLocalConfig);
-                // Merge local config into previously merged config
                 if (is_array($configLocal)) {
                     $configMerged = \yii\helpers\ArrayHelper::merge($configMerged, $configLocal);
                 }
@@ -178,10 +178,10 @@ class Environment
     {
         $config = $this->getConfig();
         if (!is_readable($config['yiiPath'])) {
-            throw new \Exception('Invalid Yii framework path "'.$config['yiiPath'].'".');
+            throw new \Exception('Invalid Yii framework path "' . $config['yiiPath'] . '".');
         }
 
-        // Set attributes
+        // Set attributes.
         $this->yiiPath = $config['yiiPath'];
         $this->yiiDebug = isset($config['yiiDebug']) ? $config['yiiDebug'] : false;
         $this->yiiEnv = isset($config['yiiEnv']) ? $config['yiiEnv'] : $this->mode;
@@ -194,7 +194,7 @@ class Environment
     }
 
     /**
-     * Defines Yii constants, includes base yii class, sets aliases and class map.
+     * Defines Yii constants, includes base Yii class, sets aliases and merges class map.
      */
     public function setup()
     {
@@ -204,30 +204,30 @@ class Environment
         defined('YII_DEBUG') or define('YII_DEBUG', $this->yiiDebug);
         /**
          * This constant defines in which environment the application is running.
-         * Defaults to 'prod', meaning production environment.
          * The value could be 'prod' (production), 'stage' (staging), 'test' (testing) or 'dev' (development).
          */
         defined('YII_ENV') or define('YII_ENV', $this->yiiEnv);
         /**
-         * Whether the the application is running in staging environment
+         * Whether the the application is running in staging environment.
          */
         defined('YII_ENV_STAGE') or define('YII_ENV_STAGE', YII_ENV === 'stage');
 
-        // Include Yii
+        // Include Yii.
         require($this->yiiPath);
 
-        // Set aliases
+        // Set aliases.
         foreach ($this->aliases as $alias => $path) {
             \Yii::setAlias($alias, $path);
         }
-        // Merge class map
+
+        // Merge class map.
         if (!empty($this->classMap)) {
             \Yii::$classMap = \yii\helpers\ArrayHelper::merge(\Yii::$classMap, $this->classMap);
         }
     }
 
     /**
-     * Show current Environment class values
+     * Show current Environment class values.
      */
     public function showDebug()
     {
