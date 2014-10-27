@@ -29,7 +29,7 @@ to the require section of your application's `composer.json` file.
 Usage
 -----
 
-###web
+###web index.php
 
 ```php
 <?php
@@ -54,7 +54,26 @@ $env->setup();
 (new yii\web\Application($env->web))->run();
 ```
 
-###console
+###console yii
+
+```php
+#!/usr/bin/env php
+<?php
+
+require(__DIR__ . '/vendor/autoload.php');
+
+// fcgi doesn't have STDIN and STDOUT defined by default
+defined('STDIN') or define('STDIN', fopen('php://stdin', 'r'));
+defined('STDOUT') or define('STDOUT', fopen('php://stdout', 'w'));
+
+$env = new \janisto\environment\Environment(__DIR__ . '/config');
+$env->setup();
+$application = new yii\console\Application($env->console);
+$exitCode = $application->run();
+exit($exitCode);
+```
+
+Use yii
 
 ```
 export YII_ENV='dev' && ./yii
