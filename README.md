@@ -21,7 +21,7 @@ php composer.phar require "janisto/yii2-environment" "*"
 or add
 
 ```json
-"janisto/yii2-environment" : "*"
+"janisto/yii2-environment": "*"
 ```
 
 to the require section of your application's `composer.json` file.
