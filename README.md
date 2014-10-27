@@ -29,7 +29,7 @@ to the require section of your application's `composer.json` file.
 Usage
 -----
 
-##web
+###web
 
 ```php
 <?php
@@ -54,7 +54,7 @@ $env->setup();
 (new yii\web\Application($env->web))->run();
 ```
 
-##console
+###console
 
 ```
 export YII_ENV='dev' && ./yii
