@@ -56,7 +56,9 @@ $env->setup();
 
 ##console
 
+```
 export YII_ENV='dev' && ./yii
+```
 
 Documentation
 -------------
