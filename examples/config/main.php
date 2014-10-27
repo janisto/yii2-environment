@@ -24,7 +24,7 @@ return [
         'components' => [
             'request' => [
                 // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-                'cookieValidationKey' => 'Po1xGeFIu2J5k7CzY6-ehGwFQUG_rFI_',
+                'cookieValidationKey' => '',
             ],
             'cache' => [
                 'class' => 'yii\caching\FileCache',
