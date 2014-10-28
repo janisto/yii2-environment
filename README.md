@@ -68,8 +68,7 @@ defined('STDOUT') or define('STDOUT', fopen('php://stdout', 'w'));
 
 $env = new \janisto\environment\Environment(__DIR__ . '/config');
 $env->setup();
-$application = new yii\console\Application($env->console);
-$exitCode = $application->run();
+$exitCode = (new yii\console\Application($env->console))->run();
 exit($exitCode);
 ```
 
