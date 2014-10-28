@@ -1,7 +1,7 @@
 {
     "name": "janisto/yii2-environment",
     "description": "Environment class for Yii 2, used to set configuration for console and web apps depending on the server environment.",
-    "keywords": ["yii", "environment", "extension"],
+    "keywords": ["yii2", "environment", "configuration", "extension"],
     "homepage": "https://github.com/janisto/yii2-environment",
     "type": "yii2-extension",
     "license": "public domain",
