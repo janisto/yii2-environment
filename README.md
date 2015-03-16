@@ -1,5 +1,4 @@
-Yii 2 Environment
-================
+# Yii 2 Environment
 
 Environment class for Yii 2, used to set configuration for console and web apps depending on the server environment.
 
@@ -7,8 +6,7 @@ Environment class for Yii 2, used to set configuration for console and web apps 
 [![Total Downloads](https://poser.pugx.org/janisto/yii2-environment/downloads.svg)](https://packagist.org/packages/janisto/yii2-environment)
 [![License](https://poser.pugx.org/janisto/yii2-environment/license.svg)](https://packagist.org/packages/janisto/yii2-environment)
 
-Installation
-------------
+## Installation
 
 If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
 at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
@@ -26,10 +24,9 @@ or add
 
 to the require section of your application's `composer.json` file.
 
-Usage
------
+## Usage
 
-###web index.php
+### web index.php
 
 ```php
 <?php
@@ -54,7 +51,7 @@ $env->setup();
 (new yii\web\Application($env->web))->run();
 ```
 
-###console yii
+### console yii
 
 ```php
 #!/usr/bin/env php
@@ -78,14 +75,19 @@ Use yii
 export YII_ENV='dev' && ./yii
 ```
 
-Documentation
--------------
+## Documentation
 
 See `examples/`.
 
-License
--------
+## Contributing
 
-yii2-environment is free and unencumbered [public domain][Unlicense] software.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-[Unlicense]: http://unlicense.org/
+## Credits
+
+- [Jani Mikkonen](https://github.com/janisto)
+- [All Contributors](../../contributors)
+
+## License
+
+Public domain. Please see [License File](LICENSE.md) for more information.
