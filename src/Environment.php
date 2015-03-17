@@ -171,7 +171,6 @@ class Environment
     /**
      * Sets the environment and configuration for the selected mode.
      *
-     * @param array $config configuration array
      * @throws \Exception
      */
     protected function setEnvironment()
