@@ -1,5 +1,5 @@
 filter:
-    excluded_paths: [tests/*]
+    excluded_paths: [vendor/*, tests/*, examples/*]
 checks:
     php:
         code_rating: true
