@@ -69,9 +69,13 @@ class Environment
      *
      * @param string|array $configDir configuration directory(s)
      * @param string $mode override automatically set environment mode
+     * @throws \Exception
      */
-    public function __construct($configDir = null, $mode = null)
+    public function __construct($configDir, $mode = null)
     {
+        if ($configDir === null) {
+            throw new \Exception('Path to configuration directory(s) missing.');
+        }
         $this->setConfigDir($configDir);
         $this->setMode($mode);
         $this->setEnvironment();
@@ -85,10 +89,6 @@ class Environment
      */
     protected function setConfigDir($configDir)
     {
-        if ($configDir === null) {
-            throw new \Exception('Path to configuration directory(s) missing.');
-        }
-
         $this->configDir = [];
         foreach ((array) $configDir as $k => $v) {
             $dir = rtrim($v, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
