@@ -9,6 +9,6 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
      */
     public function testTrueIsTrue()
     {
-        $this->assertTrue(false);
+        $this->assertTrue(true);
     }
 }
