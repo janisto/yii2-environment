@@ -231,8 +231,8 @@ class Environment
     public function showDebug()
     {
         print '<div style="position: absolute; left: 0; width: 100%; height: 250px; overflow: auto;'
-            .'bottom: 0; z-index: 9999; color: #000; margin: 0; border-top: 1px solid #000;">'
-            .'<pre style="margin: 0; background-color: #ddd; padding: 5px;">'
-            .htmlspecialchars(print_r($this, true)).'</pre></div>';
+            . 'bottom: 0; z-index: 9999; color: #000; margin: 0; border-top: 1px solid #000;">'
+            . '<pre style="margin: 0; background-color: #ddd; padding: 5px;">'
+            . htmlspecialchars(print_r($this, true)) . '</pre></div>';
     }
 }
