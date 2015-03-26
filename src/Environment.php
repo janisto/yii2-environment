@@ -5,7 +5,6 @@ namespace janisto\environment;
 /**
  * Environment class for Yii 2, used to set configuration for console and web apps depending on the server environment.
  *
- * @name Environment
  * @author Jani Mikkonen <janisto@php.net>
  * @license public domain (http://unlicense.org)
  * @link https://github.com/janisto/yii2-environment
