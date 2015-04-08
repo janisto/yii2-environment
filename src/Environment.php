@@ -141,7 +141,7 @@ class Environment
             }
             $configMain = require($fileMainConfig);
             if (is_array($configMain)) {
-                $configMerged = \yii\helpers\ArrayHelper::merge($configMerged, $configMain);
+                $configMerged = self::merge($configMerged, $configMain);
             }
 
             // Merge mode specific config.
@@ -151,7 +151,7 @@ class Environment
             }
             $configSpecific = require($fileSpecificConfig);
             if (is_array($configSpecific)) {
-                $configMerged = \yii\helpers\ArrayHelper::merge($configMerged, $configSpecific);
+                $configMerged = self::merge($configMerged, $configSpecific);
             }
 
             // If one exists, merge local config.
@@ -159,7 +159,7 @@ class Environment
             if (file_exists($fileLocalConfig)) {
                 $configLocal = require($fileLocalConfig);
                 if (is_array($configLocal)) {
-                    $configMerged = \yii\helpers\ArrayHelper::merge($configMerged, $configLocal);
+                    $configMerged = self::merge($configMerged, $configLocal);
                 }
             }
         }
@@ -192,6 +192,18 @@ class Environment
     }
 
     /**
+     * Merges two arrays into one recursively.
+     *
+     * @param array $a array to be merged to
+     * @param array $b array to be merged from.
+     * @return array the merged array (the original arrays are not changed.)
+     */
+    protected static function merge($a, $b)
+    {
+        return \yii\helpers\ArrayHelper::merge($a, $b);
+    }
+
+    /**
      * Defines Yii constants, includes base Yii class, sets aliases and merges class map.
      */
     public function setup()
@@ -220,7 +232,7 @@ class Environment
 
         // Merge class map.
         if (!empty($this->classMap)) {
-            \Yii::$classMap = \yii\helpers\ArrayHelper::merge(\Yii::$classMap, $this->classMap);
+            \Yii::$classMap = self::merge(\Yii::$classMap, $this->classMap);
         }
     }
 
