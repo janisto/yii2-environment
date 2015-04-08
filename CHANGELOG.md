@@ -2,7 +2,7 @@
 
 All Notable changes to `yii2-environment` will be documented in this file.
 
-## 1.1.0 - XXXX-XX-XX
+## 1.1.0 - 2015-04-08
 
 ### Added
 - Code refactor
