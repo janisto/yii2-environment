@@ -141,7 +141,7 @@ class Environment
             }
             $configMain = require($fileMainConfig);
             if (is_array($configMain)) {
-                $configMerged = self::merge($configMerged, $configMain);
+                $configMerged = static::merge($configMerged, $configMain);
             }
 
             // Merge mode specific config.
@@ -151,7 +151,7 @@ class Environment
             }
             $configSpecific = require($fileSpecificConfig);
             if (is_array($configSpecific)) {
-                $configMerged = self::merge($configMerged, $configSpecific);
+                $configMerged = static::merge($configMerged, $configSpecific);
             }
 
             // If one exists, merge local config.
@@ -159,7 +159,7 @@ class Environment
             if (file_exists($fileLocalConfig)) {
                 $configLocal = require($fileLocalConfig);
                 if (is_array($configLocal)) {
-                    $configMerged = self::merge($configMerged, $configLocal);
+                    $configMerged = static::merge($configMerged, $configLocal);
                 }
             }
         }
@@ -232,7 +232,7 @@ class Environment
 
         // Merge class map.
         if (!empty($this->classMap)) {
-            \Yii::$classMap = self::merge(\Yii::$classMap, $this->classMap);
+            \Yii::$classMap = static::merge(\Yii::$classMap, $this->classMap);
         }
     }
 
