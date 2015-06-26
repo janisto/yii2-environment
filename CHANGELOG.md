@@ -2,6 +2,12 @@
 
 All Notable changes to `yii2-environment` will be documented in this file.
 
+## 1.2.0 - 2015-06-26
+
+### Fixed
+- Updated dependencies
+- Travis
+
 ## 1.1.1 - 2015-04-09
 
 ### Fixed
