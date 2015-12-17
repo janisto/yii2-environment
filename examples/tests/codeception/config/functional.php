@@ -5,9 +5,8 @@ $_SERVER['SCRIPT_NAME'] = YII_TEST_ENTRY_URL;
 /**
  * Application configuration for functional tests
  */
-$env = new \janisto\environment\Environment(__DIR__ . '/../../../config', 'test');
 return yii\helpers\ArrayHelper::merge(
-    $env->web,
+    (new \janisto\environment\Environment(__DIR__ . '/../../../config', 'test'))->web,
     [
         'components' => [
             'request' => [
