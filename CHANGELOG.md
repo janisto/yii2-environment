@@ -2,10 +2,13 @@
 
 All Notable changes to `yii2-environment` will be documented in this file.
 
-## 1.2.1 - XXXX-XX-XX
+## 1.3.0 - 2016-06-01
 
 ### Fixed
 - Travis + Scrutinizer
+
+### Added
+- Tests
 
 ## 1.2.0 - 2015-06-26
 
