@@ -72,9 +72,6 @@ class Environment
      */
     public function __construct($configDir, $mode = null)
     {
-        if ($configDir === null) {
-            throw new \Exception('Path to configuration directory(s) missing.');
-        }
         $this->setConfigDir($configDir);
         $this->setMode($mode);
         $this->setEnvironment();
