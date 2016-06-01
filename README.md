@@ -4,7 +4,8 @@ Environment class for Yii 2, used to set configuration for console and web apps 
 
 [![Software License](https://img.shields.io/badge/license-Unlicense-blue.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/janisto/yii2-environment/master.svg?style=flat-square)](https://travis-ci.org/janisto/yii2-environment)
-[![Quality Score](https://img.shields.io/scrutinizer/g/janisto/yii2-environment.svg?style=flat-square)](https://scrutinizer-ci.com/g/janisto/yii2-environment)
+[![Code Quality](https://img.shields.io/scrutinizer/g/janisto/yii2-environment.svg?style=flat-square)](https://scrutinizer-ci.com/g/janisto/yii2-environment)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/janisto/yii2-environment.svg?style=flat-square)](https://scrutinizer-ci.com/g/janisto/yii2-environment)
 [![Packagist Version](https://img.shields.io/packagist/v/janisto/yii2-environment.svg?style=flat-square)](https://packagist.org/packages/janisto/yii2-environment)
 [![Total Downloads](https://img.shields.io/packagist/dt/janisto/yii2-environment.svg?style=flat-square)](https://packagist.org/packages/janisto/yii2-environment)
 
