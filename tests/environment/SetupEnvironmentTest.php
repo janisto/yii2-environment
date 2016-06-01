@@ -10,11 +10,16 @@ class SetupEnvironmentTest extends \PHPUnit_Framework_TestCase
         putenv("YII_ENV=test");
     }
 
-    public function testDefaultMode()
+    public function testEnvironmentVariable()
+    {
+        $this->assertEquals('test', getenv('YII_ENV'));
+    }
+
+    public function testSetupWebApplication()
     {
         $env = new Environment(dirname(__DIR__) . '/config');
         $env->setup();
-        (new yii\console\Application($env->console))->run();
+        (new yii\web\Application($env->web));
 
         $this->assertTrue($env->web['params']['local']);
         $this->assertTrue($env->console['params']['local']);

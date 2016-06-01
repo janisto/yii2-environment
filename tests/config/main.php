@@ -27,8 +27,9 @@ return [
         'basePath' => dirname(__DIR__),
         'components' => [
             'request' => [
-                // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
                 'cookieValidationKey' => 'eBDpJ_4AHwJyzdvgQBbuzfFAQ5YSZkU9',
+                'scriptFile' => __DIR__ . '/index.php',
+                'scriptUrl' => '/index.php',
             ],
         ],
         'params' => [
